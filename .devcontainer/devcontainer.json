@@ -1,0 +1,32 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "Python DevContainer Level 1",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	 "postCreateCommand": "pip3 install --user -r requirements.txt",
+
+	
+	 // Unsere API läuft auf Port 8000 - wir geben ihr noch ein Label und wollen diese Webadresse
+  	// in einem VS-Code internen Browser öffnen.
+	"portsAttributes": {
+		"8000": {
+			"label": "API",
+			"onAutoForward": "openPreview"
+		}
+	},
+	 // Jetzt bestimmen wir noch, welche VS-Code Extentions automatisch remote installiert werden sollen.
+  	// Diese Extensions werden nicht auf unserem lokalen System installiert sonder stehen dann allen
+  	// Nutzern dieses Containers zur Verfügung - auch wenn die nicht lokal vorhanden sind.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"humao.rest-client"		
+			]
+		}
+	}
+}
+
+
